@@ -11,15 +11,17 @@ main.addEventListener("click", (event)=>{
 	if(!project.classList.contains("project") || document.documentElement.getBoundingClientRect().width < 320 ) return
 	if(infoElem.style.right == "0%") {
 		infoElem.style.right = "-100%";
-		
+
 		main.removeChild(cloneProject);
 		return
 	}
+
+	const projectCoords = project.getBoundingClientRect();
 	cloneProject = project.cloneNode(true);
 
 	cloneProject.style.position = "absolute";
-	cloneProject.style.top = project.getBoundingClientRect().top - main.getBoundingClientRect().top + "px";
-	cloneProject.style.left = project.getBoundingClientRect().left + "px";
+	cloneProject.style.top = projectCoords.top - main.getBoundingClientRect().top + "px";
+	cloneProject.style.left = projectCoords.left + "px";
 	cloneProject.style.transition = ".4s";
 	setTimeout(()=>{
 		cloneProject.style.left = 0;
